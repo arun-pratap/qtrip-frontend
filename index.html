@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyTrip Dynamic</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <!-- <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    /> -->
+  </head>
+  <body>
+    <!-- Header -->
+    <nav
+      class="navbar navbar-expand-lg py-2"
+      style="background-color: #e3f2fd"
+      data-bs-theme="lights"
+    >
+      <div class="container">
+        <a class="navbar-brand fs-4 fw-semibold" href="./"> MyTrip Dynamic </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fw-semibold">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="./">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./pages/adventures/reservations/"
+                >Reservations</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+
+    <div class="mytrip-hero-section">
+      <div
+        class="container d-flex flex-column justify-content-center align-items-center"
+      >
+        <h1 class="fw-bold display-3">Welcome to MyTrip</h1>
+        <p class="fs-5">
+          Your adventure starts here. Explore the world with us!
+        </p>
+        <input
+          class="form-control form-control-lg"
+          style="max-width: 880px"
+          type="text"
+          placeholder="Search for destinations"
+        />
+      </div>
+    </div>
+    <!-- Content Section -->
+    <div class="container px-4 py-5" class="mytrip-content">
+      <div class="row g-4 py-5" id="mytrip-cities"></div>
+    </div>
+    <!-- Footer -->
+    <footer class="bg-light py-3 text-center text-muted">
+      <div class="container">
+        <span>&copy; 2026 MyTrip Dynamic. All rights reserved.</span>
+      </div>
+    </footer>
+
+    <script type="module">
+      // Todo:
+      // 1. Fetch cities
+      // 2. Add cities to DOM
+
+      import config from "./config/index.js";
+
+      fetch(`${config.apiURL}/cities`)
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          let cities = document.getElementById("mytrip-cities");
+          data.forEach((item) => {
+            console.log(item);
+            let colTemplate = `
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3" id=${item.id}>
+              <div class="card text-bg-dark h-100 overflow-hidden">
+                
+                  <img src=${item.image} class="card-img object-fit-cover h-100" alt="..." />
+                  <a class="card-img-overlay d-flex flex-column justify-content-end text-center text-uppercase mytrip-card-img-overlay"  href="pages/adventures/?city=${item.id}">
+                    <h5 class="card-title">${item.city}</h5>
+                    <p class="card-text">
+                      ${item.description}
+                    </p>
+                  </a>
+              
+              </div>
+            </div>
+            `;
+            cities.innerHTML += colTemplate;
+          });
+        });
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
