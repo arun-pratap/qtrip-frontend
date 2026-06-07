@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyTrip Dynamic</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <!-- <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    /> -->
+  </head>
+  <body>
+    <!-- Header -->
+    <nav
+      class="navbar navbar-expand-lg py-2"
+      style="background-color: #e3f2fd"
+      data-bs-theme="lights"
+    >
+      <div class="container">
+        <a class="navbar-brand fs-4 fw-semibold" href="../../"> MyTrip Dynamic </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fw-semibold">
+            <li class="nav-item">
+              <a class="nav-link" href="../../">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../adventures/">Reservations</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+
+    <div
+      class="container d-flex pt-5 flex-column justify-content-center align-items-start"
+    >
+      <h1 class="fw-bold">Explore all adventures</h1>
+      <p class="fs-5">Here is a list of places that you can explore in city</p>
+    </div>
+
+    <!-- Filter Section -->
+    <div class="container">
+      <div
+        class="d-flex gap-3 py-3 align-items-center border-top border-bottom border-dark-subtle"
+      >
+        <!-- Filter label -->
+        <div class="gap-3 align-items-center">
+          <p class="my-2">Filters:</p>
+        </div>
+        <style>
+          .mytrip-vertical-line {
+            width: 0.5px;
+            height: 30px;
+            background-color: #3c3c3c;
+          }
+        </style>
+        <!-- verticle Line -->
+        <div
+          class="d-none d-md-block d-inline-flex gap-3 align-items-center my-2 mytrip-vertical-line"
+        ></div>
+        <!-- Filter By Durations -->
+        <div class="d-inline-flex gap-3 align-items-center">
+          <select
+            class="form-select my-2"
+            id="select-duration"
+            aria-label="Select duration"
+          >
+            <option selected disabled value="">By duration (hours)</option>
+            <option value="0-2">0-2 Hours</option>
+            <option value="2-6">2-6 Hours</option>
+            <option value="6-12">6-12 Hours</option>
+            <option value="12">12+ Hours</option>
+          </select>
+          <p
+            class="my-2 text-primary"
+            style="cursor: pointer"
+            id="mytrip-reset-duration"
+          >
+            clear
+            <!-- Reset Duration -->
+          </p>
+        </div>
+        <!-- verticle Line -->
+        <div
+          class="d-inline-flex gap-3 align-items-center my-2 mytrip-vertical-line"
+        ></div>
+        <!-- Filter By Category -->
+        <div class="d-inline-flex gap-3 align-items-center">
+          <select
+            class="form-select my-2"
+            id="add-category"
+            aria-label="Add Category"
+          >
+            <option selected disabled value="">Add Category</option>
+            <option value="Cycling">Cycling Routes</option>
+            <option value="Hillside">Hillside Getaways</option>
+            <option value="Beaches">Serene Beaches</option>
+            <option value="Party">Party Spots</option>
+          </select>
+          <p
+            class="my-2 text-primary"
+            style="cursor: pointer"
+            id="mytrip-reset-category"
+          >
+            clear
+            <!-- Reset Category -->
+          </p>
+        </div>
+        <!-- verticle Line -->
+        <div
+          class="d-none d-md-block d-inline-flex gap-3 align-items-center my-2 mytrip-vertical-line"
+        ></div>
+      </div>
+
+      <!-- Applied Categories -->
+
+      <div
+        class="my-3 d-inline-flex flex-wrap column-gap-2 align-items-center"
+        id="mytrip-category-pills"
+      >
+        <!-- <p
+          class="d-inline-flex align-items-center gap-2 position-relative border border-warning rounded-pill fs-6 fw-normal text-bg-light ps-3 my-3"
+        >
+          <span> hello </span>
+          <span
+            style="
+              width: 35px;
+              height: 35px;
+              cursor: pointer;
+              background-color: gainsboro;
+            "
+            class="rounded-circle text-center align-middle fs-5"
+            >x</span
+          >
+        </p> -->
+      </div>
+    </div>
+    <!-- Advetures Section -->
+    <div class="container">
+      <div class="row g-4 py-2" id="mytrip-adventures">
+        <!-- <div class="col-12 col-sm-6 col-lg-4 col-xl-3" id="${item.id}">
+          <div class="card bg-light text-bg-light" style="cursor: pointer">
+            <div
+              style="
+                background-color: #f19537;
+                right: -8px;
+                box-shadow: 4px 4px 16px 8px rgb(0 0 0 / 31%) !important;
+                z-index: 1;
+              "
+              class="position-absolute top-0 rounded-start-2 mt-3 px-5 py-1 text-light fw-bold"
+            >
+              Cycling
+            </div>
+
+            <img
+              src="https://images.pexels.com/photos/1078983/pexels-photo-1078983.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+              height="320"
+              class="card-img-top object-fit-cover"
+              alt="..."
+            />
+            <div
+              class="card-body d-flex flex-column gap-2"
+              href="pages/adventures/?city=${item.id}"
+            >
+              <div
+                class="d-inline-flex justify-content-between align-items-center"
+              >
+                <h5 class="card-title fs-6 fw-semibold mb-0">Niaboytown</h5>
+                <p class="card-text">3184</p>
+              </div>
+              <div
+                class="d-inline-flex justify-content-between align-items-center"
+              >
+                <h5 class="card-title fs-6 mb-0">Duration</h5>
+                <p class="card-text">6 Hours</p>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer class="bg-light py-3 text-center text-muted">
+      <div class="container">
+        <span>&copy; 2026 MyTrip Dynamic. All rights reserved.</span>
+      </div>
+    </footer>
+
+    <script type="module">
+      import {
+        getQueryParamFromURL,
+        fetchAdventures,
+        // filterByDuration,
+        // filterByCategory,
+        applyFilters,
+        addAdventuresToDOM,
+        addCategoryToFiltersAndDOM,
+      } from "../../modules/adventures.js";
+
+      // Todo:
+      // 1. Get query params from URL
+      // 2. Use API to get the data
+      // 3. Set filters to local storage ( get filters from loclstorage if presnt get it from local storge or intill feeed its iinitial value)
+
+      let filters = JSON.parse(window.localStorage.getItem("filters")) || {
+        duration: "",
+        category: [],
+      };
+      let adventures;
+      async function init() {
+        const city = getQueryParamFromURL("city");
+        adventures = await fetchAdventures(city);
+        addAdventuresToDOM(applyFilters(filters, adventures));
+        addCategoryToFiltersAndDOM(filters);
+      }
+      init();
+
+      function handleSelectDuration(event) {
+        console.log(event.target.value);
+        filters.duration = event.target.value;
+
+        let filteredAdventures = applyFilters(filters, adventures);
+        addAdventuresToDOM(filteredAdventures);
+        window.localStorage.setItem("filters", JSON.stringify(filters));
+      }
+
+      function handleAddCategory(event) {
+        // console.log(event.target.value);
+
+        let value = event.target.value;
+
+        // this works because, if any element repeats again then indexof doesnt return that prtiular index, insteaad it will return first occurence
+
+        if (filters.category.indexOf(value) === -1) {
+          filters.category.push(event.target.value);
+
+          addAdventuresToDOM(applyFilters(filters, adventures));
+
+          addCategoryToFiltersAndDOM(filters);
+        }
+        event.target.selectedIndex = 0;
+
+        window.localStorage.setItem("filters", JSON.stringify(filters));
+      }
+
+      function removeCategory(event) {
+        if (event.target.textContent === "x") {
+          let parentElement = event.target.parentElement;
+          let parentElementId = parentElement.id;
+
+          console.log(parentElementId);
+          parentElement.remove();
+          let updatedCategory = filters.category.filter(
+            (item) => item.toLowerCase() !== parentElementId.split("-")[2],
+          );
+          filters.category = updatedCategory;
+          addAdventuresToDOM(applyFilters(filters, adventures));
+          console.log(updatedCategory);
+          window.localStorage.setItem("filters", JSON.stringify(filters));
+        }
+      }
+
+      function resetCategory(event) {
+        filters.category = [];
+        addAdventuresToDOM(applyFilters(filters, adventures));
+        addCategoryToFiltersAndDOM(filters);
+        window.localStorage.setItem("filters", JSON.stringify(filters));
+      }
+
+      function resetDuration(filtersFromLocalStorage) {
+        filters.duration = "";
+        document.getElementById("select-duration").selectedIndex = 0;
+        console.log(document.getElementById("select-duration").selectedIndex);
+        addAdventuresToDOM(applyFilters(filters, adventures));
+        window.localStorage.setItem("filters", JSON.stringify(filters));
+      }
+
+      const selectDurationElement = document.getElementById("select-duration");
+      selectDurationElement.addEventListener("change", handleSelectDuration);
+
+      const resetDurationElement = document.getElementById(
+        "mytrip-reset-duration",
+      );
+      resetDurationElement.addEventListener("click", resetDuration);
+
+      const addCategoryElement = document.getElementById("add-category");
+      addCategoryElement.addEventListener("change", handleAddCategory);
+
+      const resetCategoryElement = document.getElementById(
+        "mytrip-reset-category",
+      );
+      resetCategoryElement.addEventListener("click", resetCategory);
+
+      const categoryPills = document.getElementById("mytrip-category-pills");
+      categoryPills.addEventListener("click", removeCategory);
+
+      // window.handleSelectDuration = handleSelectDuration;
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

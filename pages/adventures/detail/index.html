@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyTrip Dynamic</title>
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../../css/style.css" />
+    <!-- <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    /> -->
+  </head>
+  <body>
+    <!-- Header -->
+    <nav
+      class="navbar navbar-expand-lg py-2"
+      style="background-color: #e3f2fd"
+      data-bs-theme="lights"
+    >
+      <div class="container">
+        <a class="navbar-brand fs-4 fw-semibold" href="../../../"> MyTrip Dynamic </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fw-semibold">
+            <li class="nav-item">
+              <a class="nav-link " href="../../../">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../reservations/">Reservations</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Adveture Detail Section -->
+    <div class="container py-5" id="mytrip-adventure-detail">
+      <div class="row py-2 row-gap-4">
+        <div class="col-lg-8">
+          <div class="card">
+            <div class="card-body">
+              <h1 id="mytrip-adventure-detail-name">Niabown</h1>
+              <p id="mytrip-adventure-detail-subtitle">This is a adventure!</p>
+              <style>
+                .mytrip-adventure-detail-carousel-img {
+                  height: 500px;
+                  object-fit: cover;
+                  object-position: top center;
+                  cursor: pointer;
+                  filter: brightness(0.9);
+                  transition: filter 0.3s ease-in-out;
+                }
+                .mytrip-adventure-detail-carousel-img:hover {
+                  filter: brightness(0.6);
+                }
+              </style>
+              <!-- image carousel -->
+
+              <div
+                class="carousel slide"
+                id="mytrip-adventure-detail-carousel"
+                data-bs-touch="true"
+                data-bs-ride="carousel"
+              >
+                <div class="carousel-indicators"></div>
+
+                <div class="carousel-inner" id="mytrip-adventure-detail-images">
+                  <!-- <div class="carousel-item active h-100">
+                    <img
+                      src="https://images.pexels.com/photos/258045/pexels-photo-258045.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+                      class="d-block w-100 mytrip-adventure-detail-carousel-img"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="carousel-item h-100">
+                    <img
+                      src="https://images.pexels.com/photos/2437297/pexels-photo-2437297.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+                      class="d-block w-100 mytrip-adventure-detail-carousel-img"
+                      alt="..."
+                    />
+                  </div> -->
+                </div>
+                <button
+                  class="carousel-control-prev"
+                  type="button"
+                  data-bs-target="#mytrip-adventure-detail-carousel"
+                  data-bs-slide="prev"
+                >
+                  <span
+                    class="carousel-control-prev-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button
+                  class="carousel-control-next"
+                  type="button"
+                  data-bs-target="#mytrip-adventure-detail-carousel"
+                  data-bs-slide="next"
+                >
+                  <span
+                    class="carousel-control-next-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+              <div class="text-success">
+                <hr />
+              </div>
+              <div class="card border-0">
+                <!-- <div class="card-header">Featured</div> -->
+                <div class="card-body py-0 px-2">
+                  <h5 class="card-title">About the Experience</h5>
+                  <p class="card-text" id="mytrip-adventure-detail-content"></p>
+                  <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="row g-4" id="mytrip-reservation">
+            <div class="d-none col-12" id="mytrip-reservation-sold">
+              <div class="card">
+                <!-- <div class="card-header">Featured</div> -->
+                <div class="card-body">
+                  <h5 class="card-title fs-3">Sold Out!</h5>
+                  <div class="text-success">
+                    <hr />
+                  </div>
+                  <p class="card-text">
+                    This activity is currently sold out. But there's a lot more
+                    to
+                    <a href="../../../">explore</a>
+                  </p>
+                  <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+              </div>
+            </div>
+
+            <!-- form -->
+            <div class="col-12" id="mytrip-reservation-form-container">
+              <div class="card">
+                <div class="card-body">
+                  <form>
+                    <div class="mb-3">
+                      <label for="name" class="form-label">Name</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        id="name"
+                        required
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="date" class="form-label">Pick a Date</label>
+                      <input
+                        class="form-control"
+                        type="datetime-local"
+                        id="date"
+                        required
+                      />
+                    </div>
+                    <div class="text-success">
+                      <hr />
+                    </div>
+                    <!-- Cost per head -->
+                    <div class="row align-items-center">
+                      <div class="col">
+                        <div>
+                          <label for="person" class="form-label fw-semibold">
+                            Person(s)</label
+                          ><br />
+                          <span id="mytrip-reservation-cost"></span>
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <input
+                          class="form-control"
+                          type="number"
+                          value="0"
+                          min="1"
+                          max="10"
+                          id="person"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <hr />
+                    <!-- Total and submit -->
+                    <div class="row align-items-center">
+                      <div class="col">
+                        <p class="fw-semibold">Total</p>
+                      </div>
+                      <div class="col text-end">
+                        <p
+                          class="fs-5 fw-semibold"
+                          id="mytrip-reservation-total-cost"
+                        ></p>
+                      </div>
+                    </div>
+
+                    <button
+                      type="submit"
+                      class="btn btn-large w-100 mt-2 mb-3 py-3 fs-6 fw-bold text-white"
+                      style="background-color: #ff9100"
+                    >
+                      Reserve
+                    </button>
+                  </form>
+                  <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer class="bg-light py-3 text-center text-muted">
+      <div class="container">
+        <span>&copy; 2026 MyTrip Dynamic. All rights reserved.</span>
+      </div>
+    </footer>
+
+    <script type="module">
+      import {
+        fetchAdventureDetail,
+        addAdventureDetailToDOM,
+        addBootstrapImageCarousel,
+        checkAvailabilityAndAddFormToDOMConditionally,
+        calculateTotalCostAndAddToDOM,
+        OnSubmitReservationForm,
+      } from "../../../modules/adventure-detail.js";
+
+      async function init() {
+        const adventureId = new URLSearchParams(window.location.search).get(
+          "adventure",
+        );
+
+        const adventureDetail = await fetchAdventureDetail(adventureId);
+        addAdventureDetailToDOM(adventureDetail);
+        addBootstrapImageCarousel(adventureDetail.images);
+        checkAvailabilityAndAddFormToDOMConditionally(
+          adventureDetail.available,
+        );
+        OnSubmitReservationForm(adventureId);
+
+        const personInput = document.querySelector(
+          " #mytrip-reservation-form-container form #person",
+        );
+        personInput.addEventListener("keyup", (event) => {
+          calculateTotalCostAndAddToDOM(
+            adventureDetail.costPerHead,
+            event.target.value,
+          );
+          // if (event.target.value >= 11) {
+          //   ((personInput.parentElement.lastElementChild.innerHTML = ""),
+          //     personInput.parentElement.insertAdjacentHTML(
+          //       "beforeend",
+          //       `
+          // <small class="text-danger"> Only 10 persons are allowed at once</small>
+          // `,
+          //     ));
+          // } else {
+          //   personInput.parentElement.lastElementChild.innerHTML = "";
+          // }
+        });
+      }
+      init();
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

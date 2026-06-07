@@ -1,0 +1,71 @@
+.bg-orange {
+  background-color: #ff9100;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.bg-orange:hover {
+background-color: #ffaa00;
+}
+
+.text-orange {
+  color: #ff9100;
+}
+
+.mytrip-hero-section {
+  background-image:
+    linear-gradient(#000000b3, #000000b3), url(../assets/cover-image.jpg);
+  background-position: center;
+  display: flex;
+  height: 416px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.mytrip-card-img-overlay {
+  /* padding: 0px; */
+  letter-spacing: 2px;
+  background: rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.3s ease-in-out;
+}
+
+#mytrip-cities .card:hover .mytrip-card-img-overlay {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+#mytrip-cities .card {
+  cursor: pointer;
+}
+#mytrip-cities .card .card-img {
+  transition: transform 0.2s ease-in-out;
+}
+
+#mytrip-cities .card:hover .card-img {
+  transform: scale(1.1);
+}
+
+/* adventures page */
+#mytrip-adventures .card-img {
+}
+
+#mytrip-adventures .card:hover .card-img-top {
+  filter: brightness(0.7);
+}
+
+/* 
+Zoom card image on hovering bootstrap card
+*/
+.mytrip-card {
+  cursor: pointer;
+}
+
+.mytrip-card-img {
+  transition: transform 0.2s ease-in-out;
+}
+
+.mytrip-card:hover .mytrip-card-img {
+  transform: scale(1.1);
+}
